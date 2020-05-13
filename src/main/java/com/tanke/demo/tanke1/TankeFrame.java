@@ -1,13 +1,14 @@
 package com.tanke.demo.tanke1;
 
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 
 /**
  * created by zyj on 2020/5/13
  */
 public class TankeFrame extends Frame {
+
+    int x=200, y=200;
 
     public TankeFrame(){
         //frame就是一个窗口类
@@ -24,14 +25,27 @@ public class TankeFrame extends Frame {
                 System.exit(0);
             }
         });
+        //调用重写的
+        addKeyListener(new MyKeyListener());
     }
 
     //窗口重新绘制的时候自动执行这个方法
     @Override
     public void paint(Graphics graphics){
-        graphics.fillRect(200,200,50,50);
-        System.out.println("hello world frame");
+        graphics.fillRect(x,y,50,50);
+        x +=100;
+        y +=100;
     }
 
+    class MyKeyListener extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent event){
+            System.out.println("key pressed");
+        }
+        @Override
+        public void keyReleased(KeyEvent event){
+            System.out.println("key released");
+        }
+    }
 
 }
