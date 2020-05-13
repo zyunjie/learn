@@ -10,9 +10,12 @@ import java.awt.event.WindowEvent;
  */
 public class FrameTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         TankeFrame tf = new TankeFrame();
-
+        while (true){
+            Thread.sleep(50);
+            tf.repaint();
+        }
     }
 
 }
