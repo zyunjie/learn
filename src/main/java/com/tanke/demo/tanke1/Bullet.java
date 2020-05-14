@@ -19,7 +19,7 @@ public class Bullet {
     public void paint(Graphics graphics) {
         //画出子弹
         Color color = graphics.getColor();
-        graphics.setColor(Color.pink);
+        graphics.setColor(Color.red);
         graphics.fillOval(x,y,WIDTH,HEIGHT);
         graphics.setColor(color);
         move();

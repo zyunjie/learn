@@ -12,12 +12,15 @@ public class MyTanke {
     Dir dir = Dir.LEFT;
     //坦克移动变量
     private boolean moving = false;
+
+    TankeFrame tf = null;
     
 
-    public MyTanke(int x, int y, Dir dir) {
+    public MyTanke(int x, int y, Dir dir,TankeFrame tf) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.tf=tf;
     }
 
     public Dir getDir() {
@@ -31,7 +34,7 @@ public class MyTanke {
     public void paint(Graphics graphics) {
         //画出坦克
         Color color = graphics.getColor();
-        graphics.setColor(Color.red);
+        graphics.setColor(Color.white);
         graphics.fillRect(x,y,50,50);
         graphics.setColor(color);
         move();
@@ -65,5 +68,18 @@ public class MyTanke {
 
     public void setMoving(boolean moving) {
         this.moving = moving;
+    }
+
+    public void fire() {
+        tf.bullet=new Bullet(this.x,this.y,this.dir);
+
+    }
+
+    public TankeFrame getTf() {
+        return tf;
+    }
+
+    public void setTf(TankeFrame tf) {
+        this.tf = tf;
     }
 }
