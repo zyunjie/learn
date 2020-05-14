@@ -8,7 +8,7 @@ import java.awt.*;
 public class MyTanke {
     private  int x, y;
     //每次移动速度
-    final  int SPEED=10;
+    final  int SPEED=5;
     Dir dir = Dir.LEFT;
     //坦克移动变量
     private boolean moving = false;
@@ -30,7 +30,10 @@ public class MyTanke {
 
     public void paint(Graphics graphics) {
         //画出坦克
+        Color color = graphics.getColor();
+        graphics.setColor(Color.red);
         graphics.fillRect(x,y,50,50);
+        graphics.setColor(color);
         move();
 
     }
