@@ -1,5 +1,8 @@
 package com.tanke.demo.tanke1;
 
+import com.sun.javafx.scene.DirtyBits;
+
+import javax.xml.ws.RespectBinding;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -8,10 +11,7 @@ import java.awt.event.*;
  */
 public class TankeFrame extends Frame {
 
-    private  int x = 200, y = 200;
-    //每次移动速度
-    final  int SPEED=10;
-    Dir dir = Dir.LEFT;
+    MyTanke myTanke = new MyTanke(200,200,Dir.DOWN);
 
     public TankeFrame() {
         //frame就是一个窗口类
@@ -23,8 +23,6 @@ public class TankeFrame extends Frame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-//                super.windowClosing(e);
-                //系统退出
                 System.exit(0);
             }
         });
@@ -35,24 +33,7 @@ public class TankeFrame extends Frame {
     //窗口重新绘制的时候自动执行这个方法
     @Override
     public void paint(Graphics graphics) {
-        graphics.fillRect(x, y, 50, 50);
-        switch (dir) {
-            case LEFT:
-                x-=SPEED;
-                break;
-            case UP:
-                y-=SPEED;
-                break;
-            case RIGHT:
-                x+=SPEED;
-                break;
-            case DOWN:
-                y+=SPEED;
-                break;
-            default:
-                break;
-        }
-//        y +=10;
+        myTanke.paint(graphics);
     }
 
     class MyKeyListener extends KeyAdapter {
@@ -119,10 +100,12 @@ public class TankeFrame extends Frame {
         }
 
         private void setTankeDir() {
-            if (bl) dir = Dir.LEFT;
-            if (bu) dir = Dir.UP;
-            if (br) dir = Dir.RIGHT;
-            if (bd) dir = Dir.DOWN;
+            myTanke.setMoving(true);
+            if (bl) myTanke.setDir(Dir.LEFT);
+            if (bu) myTanke.setDir(Dir.UP);
+            if (br) myTanke.setDir(Dir.RIGHT);
+            if (bd) myTanke.setDir(Dir.DOWN);
+            if (!bl && !bu&& !br && !bd){myTanke.setMoving(false);};
         }
     }
 
