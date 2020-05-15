@@ -9,14 +9,20 @@ import java.util.Collection;
 public class Bullet {
     private  int x, y;
     //每次移动速度
-    final  int SPEED=1;
+    final  int SPEED=10;
     Dir dir;
     private static  int WIDTH=20,HEIGHT=20;
+    TankeFrame tankeFrame= null;
+    //子弹存活状态
+    private boolean live= true;
 
 
 
 
     public void paint(Graphics graphics) {
+        if (!live){
+            tankeFrame.bullets.remove(this);
+        }
         //画出子弹
         Color color = graphics.getColor();
         graphics.setColor(Color.red);
@@ -42,13 +48,17 @@ public class Bullet {
             default:
                 break;
         }
+        if (x<0||y<0||x>TankeFrame.FRAME_WIDTH||y>TankeFrame.FRAME_HEIGHT){
+            live=false;
+        }
     }
 
 
-    public Bullet(int x, int y, Dir dir) {
+    public Bullet(int x, int y, Dir dir,TankeFrame tankeFrame) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.tankeFrame=tankeFrame;
     }
 
     public int getX() {

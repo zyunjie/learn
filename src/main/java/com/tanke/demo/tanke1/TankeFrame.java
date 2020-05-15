@@ -5,6 +5,7 @@ import com.sun.javafx.scene.DirtyBits;
 import javax.xml.ws.RespectBinding;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 /**
  * created by zyj on 2020/5/13
@@ -12,7 +13,7 @@ import java.awt.event.*;
 public class TankeFrame extends Frame {
 
     MyTanke myTanke = new MyTanke(200,200,Dir.DOWN,this);
-    Bullet bullet = new Bullet(300,300,Dir.UP);
+    ArrayList<Bullet> bullets = new ArrayList<>();
     final  static int  FRAME_WIDTH=800,FRAME_HEIGHT=600;
     public TankeFrame() {
         //frame就是一个窗口类
@@ -128,8 +129,17 @@ public class TankeFrame extends Frame {
     //窗口重新绘制的时候自动执行这个方法
     @Override
     public void paint(Graphics graphics) {
+        Color color = graphics.getColor();
+        graphics.setColor(Color.white);
+        graphics.drawString("子弹数"+bullets.size(),10,60);
+        graphics.setColor(color);
         myTanke.paint(graphics);
-        bullet.paint(graphics);
+//        for (Bullet bullet:bullets){
+//            bullet.paint(graphics);
+//        }
+        for (int i=0;i<bullets.size();i++){
+            bullets.get(i).paint(graphics);
+        }
     }
 
 
