@@ -1,8 +1,5 @@
 package com.tanke.demo.tanke1;
 
-import com.sun.javafx.scene.DirtyBits;
-
-import javax.xml.ws.RespectBinding;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -102,15 +99,27 @@ public class TankeFrame extends Frame {
 
         private void setTankeDir() {
             myTanke.setMoving(true);
-            if (bl) myTanke.setDir(Dir.LEFT);
-            if (bu) myTanke.setDir(Dir.UP);
-            if (br) myTanke.setDir(Dir.RIGHT);
-            if (bd) myTanke.setDir(Dir.DOWN);
-            if (!bl && !bu&& !br && !bd){myTanke.setMoving(false);};
+            if (bl) {
+                myTanke.setDir(Dir.LEFT);
+            }
+            if (bu) {
+                myTanke.setDir(Dir.UP);
+            }
+            if (br) {
+                myTanke.setDir(Dir.RIGHT);
+            }
+            if (bd) {
+                myTanke.setDir(Dir.DOWN);
+            }
+            if (!bl && !bu&& !br && !bd){myTanke.setMoving(false);}
         }
     }
 
-    //解决闪屏问题
+    /**
+    *@Author : zyj
+    *@Date : 15:03 2020/5/15
+    * 
+    */
     Image offScreenImage=null;
     @Override
     public void update(Graphics g){
