@@ -1,6 +1,7 @@
 package com.tanke.demo.tanke1;
 
 import java.awt.*;
+import java.awt.image.ImageObserver;
 
 /**
  * created by zyj on 2020/5/14
@@ -33,10 +34,22 @@ public class MyTanke {
 
     public void paint(Graphics graphics) {
         //画出坦克
-        Color color = graphics.getColor();
-        graphics.setColor(Color.white);
-        graphics.fillRect(x,y,50,50);
-        graphics.setColor(color);
+        switch (dir) {
+            case LEFT:
+                graphics.drawImage(ResourceMgr.tankL,x,y, null);
+                break;
+            case UP:
+                graphics.drawImage(ResourceMgr.tankdU,x,y, null);
+                break;
+            case RIGHT:
+                graphics.drawImage(ResourceMgr.tankR,x,y, null);
+                break;
+            case DOWN:
+                graphics.drawImage(ResourceMgr.tankD,x,y, null);
+                break;
+            default:
+                break;
+        }
         move();
 
     }

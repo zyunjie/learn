@@ -16,7 +16,7 @@ public class ImageTest {
 
     @Test
     void test() throws IOException {
-        BufferedImage image = ImageIO.read(new File(""));
+        BufferedImage image = ImageIO.read(ImageTest.class.getClassLoader().getResourceAsStream("images/tankL.gif"));
         assertNotNull(image);
     }
 }

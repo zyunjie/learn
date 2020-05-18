@@ -24,10 +24,22 @@ public class Bullet {
             tankeFrame.bullets.remove(this);
         }
         //画出子弹
-        Color color = graphics.getColor();
-        graphics.setColor(Color.red);
-        graphics.fillOval(x,y,WIDTH,HEIGHT);
-        graphics.setColor(color);
+        switch (dir) {
+            case LEFT:
+                graphics.drawImage(ResourceMgr.bulletL,x,y, null);
+                break;
+            case UP:
+                graphics.drawImage(ResourceMgr.bulletU,x,y, null);
+                break;
+            case RIGHT:
+                graphics.drawImage(ResourceMgr.bulletR,x,y, null);
+                break;
+            case DOWN:
+                graphics.drawImage(ResourceMgr.bulletD,x,y, null);
+                break;
+            default:
+                break;
+        }
         move();
 
     }
