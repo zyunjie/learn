@@ -14,6 +14,8 @@ public class MyTanke {
     //坦克移动变量
     private boolean moving = false;
 
+    public static  int WIDTH=ResourceMgr.tankL.getWidth();
+    public static int  HEIGHT=ResourceMgr.tankL.getHeight();
     TankeFrame tf = null;
     
 
@@ -84,7 +86,9 @@ public class MyTanke {
     }
 
     public void fire() {
-        tf.bullets.add(new Bullet(this.x,this.y,this.dir,this.tf));
+        int bx=this.x+MyTanke.WIDTH/2-Bullet.WIDTH/2;
+        int by=this.y+MyTanke.HEIGHT/2-Bullet.HEIGHT/2;
+        tf.bullets.add(new Bullet(bx,by,this.dir,this.tf));
 
     }
 

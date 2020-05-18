@@ -11,7 +11,8 @@ public class Bullet {
     //每次移动速度
     final  int SPEED=10;
     Dir dir;
-    private static  int WIDTH=20,HEIGHT=20;
+    public static  int WIDTH=ResourceMgr.bulletD.getWidth();
+    public static int  HEIGHT=ResourceMgr.bulletD.getHeight();
     TankeFrame tankeFrame= null;
     //子弹存活状态
     private boolean live= true;
