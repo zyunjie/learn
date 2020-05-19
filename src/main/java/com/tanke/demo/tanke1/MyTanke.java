@@ -10,7 +10,7 @@ import java.util.Random;
 public class MyTanke {
     private  int x, y;
     //每次移动速度
-    final  int SPEED=1;
+    final  int SPEED=5;
     Dir dir = Dir.LEFT;
     //坦克移动变量
     private boolean moving = true;
@@ -18,6 +18,8 @@ public class MyTanke {
 
     private Random random=new Random();
     private Group group=Group.BAD;
+
+    Rectangle rect = new Rectangle();
 
     public static  int WIDTH=ResourceMgr.tankL.getWidth();
     public static int  HEIGHT=ResourceMgr.tankL.getHeight();
@@ -30,6 +32,11 @@ public class MyTanke {
         this.dir = dir;
         this.tf=tf;
         this.group=group;
+
+        rect.x=this.x;
+        rect.y=this.y;
+        rect.width=WIDTH;
+        rect.height=HEIGHT;
     }
 
     public Dir getDir() {
@@ -81,10 +88,21 @@ public class MyTanke {
             default:
                 break;
         }
+
         if (this.group==Group.BAD&&random.nextInt(10)>8){this.fire();}
         if (this.group==Group.BAD &&random.nextInt(100)>95) {
             randomDir();
         }
+        boundCheck();
+        rect.x=this.x;
+        rect.y=this.y;
+    }
+
+    private void boundCheck() {
+        if (this.x<0)x=0;
+        if(this.y<30)y=30;
+        if (this.x>TankeFrame.FRAME_WIDTH-MyTanke.WIDTH)x=TankeFrame.FRAME_WIDTH-MyTanke.WIDTH;
+        if (this.y>TankeFrame.FRAME_HEIGHT-MyTanke.HEIGHT)y=TankeFrame.FRAME_HEIGHT-MyTanke.HEIGHT;
     }
 
     private void randomDir() {

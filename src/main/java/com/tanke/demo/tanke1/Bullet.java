@@ -14,6 +14,7 @@ public class Bullet {
     public static  int WIDTH=ResourceMgr.bulletD.getWidth();
     public static int  HEIGHT=ResourceMgr.bulletD.getHeight();
 
+    Rectangle rect = new Rectangle();
     private Group group = Group.BAD;
     TankeFrame tankeFrame= null;
     //子弹存活状态
@@ -63,6 +64,8 @@ public class Bullet {
             default:
                 break;
         }
+        rect.x=this.x;
+        rect.y=this.y;
         if (x<0||y<0||x>TankeFrame.FRAME_WIDTH||y>TankeFrame.FRAME_HEIGHT){
             live=false;
         }
@@ -75,6 +78,10 @@ public class Bullet {
         this.dir = dir;
         this.tankeFrame=tankeFrame;
         this.group=group;
+        rect.x=this.x;
+        rect.y=this.y;
+        rect.width=WIDTH;
+        rect.height=HEIGHT;
     }
 
     public int getX() {
@@ -108,9 +115,7 @@ public class Bullet {
     public void collideWith(MyTanke myTanke) {
         if (this.group==myTanke.getGroup()) return;
         //todo子弹和坦克中使用一个tectangle记录位置
-        Rectangle bu = new Rectangle(this.x,this.y,WIDTH,HEIGHT);
-        Rectangle ta = new Rectangle(myTanke.getX(),myTanke.getY(),MyTanke.WIDTH,MyTanke.HEIGHT);
-        if (bu.intersects(ta)){
+        if (rect.intersects(myTanke.rect)){
             this.die();
             myTanke.die();
             int ex= myTanke.getX()+MyTanke.WIDTH/2-Explode.WIDTH/2;
