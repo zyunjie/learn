@@ -10,7 +10,7 @@ import java.util.Random;
 public class MyTanke {
     private  int x, y;
     //每次移动速度
-    final  int SPEED=5;
+    final  int SPEED=1;
     Dir dir = Dir.LEFT;
     //坦克移动变量
     private boolean moving = true;

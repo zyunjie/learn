@@ -12,6 +12,7 @@ public class TankeFrame extends Frame {
     MyTanke myTanke = new MyTanke(500,500,Dir.UP,this,Group.GOOD);
     ArrayList<Bullet> bullets = new ArrayList<>();
     ArrayList<MyTanke> myTankes = new ArrayList<>();
+    ArrayList<Explode> explodes= new ArrayList<>();
     final  static int  FRAME_WIDTH=800,FRAME_HEIGHT=600;
     public TankeFrame() {
         //frame就是一个窗口类
@@ -149,6 +150,9 @@ public class TankeFrame extends Frame {
         }
         for (int i=0;i<bullets.size();i++){
             bullets.get(i).paint(graphics);
+        }
+        for (int i=0;i<explodes.size();i++){
+            explodes.get(i).paint(graphics);
         }
         for (int i=0;i<bullets.size();i++){
             for (int j=0;j<myTankes.size();j++) {
