@@ -11,17 +11,12 @@ public class Explode {
     public static int  HEIGHT=ResourceMgr.explodes[0].getHeight();
 
     private int step=0;
-    private boolean living=true;
     TankeFrame tankeFrame= null;
 
     public void paint(Graphics graphics) {
-        if (!living){
-            this.tankeFrame.explodes.remove(this);
-        }
         graphics.drawImage(ResourceMgr.explodes[step++],x,y,null);
         if (step>=ResourceMgr.explodes.length){
-            this.living=false;
-            step=0;
+            this.tankeFrame.explodes.remove(this);
         }
     }
 
