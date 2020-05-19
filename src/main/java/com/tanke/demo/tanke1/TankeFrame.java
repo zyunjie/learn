@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class TankeFrame extends Frame {
 
-    MyTanke myTanke = new MyTanke(500,500,Dir.UP,this);
+    MyTanke myTanke = new MyTanke(500,500,Dir.UP,this,Group.GOOD);
     ArrayList<Bullet> bullets = new ArrayList<>();
     ArrayList<MyTanke> myTankes = new ArrayList<>();
     final  static int  FRAME_WIDTH=800,FRAME_HEIGHT=600;

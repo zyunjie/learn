@@ -2,6 +2,7 @@ package com.tanke.demo.tanke1;
 
 import java.awt.*;
 import java.awt.image.ImageObserver;
+import java.util.Random;
 
 /**
  * created by zyj on 2020/5/14
@@ -12,19 +13,23 @@ public class MyTanke {
     final  int SPEED=5;
     Dir dir = Dir.LEFT;
     //坦克移动变量
-    private boolean moving = false;
+    private boolean moving = true;
     private boolean living = true;
+
+    private Random random=new Random();
+    private Group group=Group.BAD;
 
     public static  int WIDTH=ResourceMgr.tankL.getWidth();
     public static int  HEIGHT=ResourceMgr.tankL.getHeight();
     TankeFrame tf = null;
     
 
-    public MyTanke(int x, int y, Dir dir,TankeFrame tf) {
+    public MyTanke(int x, int y, Dir dir,TankeFrame tf,Group group) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.tf=tf;
+        this.group=group;
     }
 
     public Dir getDir() {
@@ -76,6 +81,7 @@ public class MyTanke {
             default:
                 break;
         }
+        if (random.nextInt(10)>8){this.fire();}
     }
 
 
@@ -90,7 +96,7 @@ public class MyTanke {
     public void fire() {
         int bx=this.x+MyTanke.WIDTH/2-Bullet.WIDTH/2;
         int by=this.y+MyTanke.HEIGHT/2-Bullet.HEIGHT/2;
-        tf.bullets.add(new Bullet(bx,by,this.dir,this.tf));
+        tf.bullets.add(new Bullet(bx,by,this.dir,this.tf,this.getGroup()));
 
     }
 
@@ -142,5 +148,27 @@ public class MyTanke {
         MyTanke.HEIGHT = HEIGHT;
     }
 
+    public boolean isLiving() {
+        return living;
+    }
 
+    public void setLiving(boolean living) {
+        this.living = living;
+    }
+
+    public Random getRandom() {
+        return random;
+    }
+
+    public void setRandom(Random random) {
+        this.random = random;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
 }
