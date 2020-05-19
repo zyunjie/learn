@@ -13,6 +13,7 @@ public class MyTanke {
     Dir dir = Dir.LEFT;
     //坦克移动变量
     private boolean moving = false;
+    private boolean living = true;
 
     public static  int WIDTH=ResourceMgr.tankL.getWidth();
     public static int  HEIGHT=ResourceMgr.tankL.getHeight();
@@ -35,6 +36,7 @@ public class MyTanke {
     }
 
     public void paint(Graphics graphics) {
+        if (!living){tf.myTankes.remove(this);}
         //画出坦克
         switch (dir) {
             case LEFT:
@@ -92,6 +94,10 @@ public class MyTanke {
 
     }
 
+    public void die() {
+        this.living=false;
+    }
+
     public TankeFrame getTf() {
         return tf;
     }
@@ -99,4 +105,42 @@ public class MyTanke {
     public void setTf(TankeFrame tf) {
         this.tf = tf;
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getSPEED() {
+        return SPEED;
+    }
+
+    public static int getWIDTH() {
+        return WIDTH;
+    }
+
+    public static void setWIDTH(int WIDTH) {
+        MyTanke.WIDTH = WIDTH;
+    }
+
+    public static int getHEIGHT() {
+        return HEIGHT;
+    }
+
+    public static void setHEIGHT(int HEIGHT) {
+        MyTanke.HEIGHT = HEIGHT;
+    }
+
+
 }

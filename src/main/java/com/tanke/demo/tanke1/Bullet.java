@@ -101,4 +101,17 @@ public class Bullet {
     public void setDir(Dir dir) {
         this.dir = dir;
     }
+
+    public void collideWith(MyTanke myTanke) {
+        Rectangle bu = new Rectangle(this.x,this.y,WIDTH,HEIGHT);
+        Rectangle ta = new Rectangle(myTanke.getX(),myTanke.getY(),MyTanke.WIDTH,MyTanke.HEIGHT);
+        if (bu.intersects(ta)){
+            this.die();
+            myTanke.die();
+        }
+    }
+
+    private void die() {
+        this.live=false;
+    }
 }

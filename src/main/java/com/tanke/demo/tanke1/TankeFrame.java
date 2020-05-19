@@ -9,8 +9,9 @@ import java.util.ArrayList;
  */
 public class TankeFrame extends Frame {
 
-    MyTanke myTanke = new MyTanke(200,200,Dir.DOWN,this);
+    MyTanke myTanke = new MyTanke(500,500,Dir.UP,this);
     ArrayList<Bullet> bullets = new ArrayList<>();
+    ArrayList<MyTanke> myTankes = new ArrayList<>();
     final  static int  FRAME_WIDTH=800,FRAME_HEIGHT=600;
     public TankeFrame() {
         //frame就是一个窗口类
@@ -143,11 +144,16 @@ public class TankeFrame extends Frame {
         graphics.drawString("子弹数"+bullets.size(),10,60);
         graphics.setColor(color);
         myTanke.paint(graphics);
-//        for (Bullet bullet:bullets){
-//            bullet.paint(graphics);
-//        }
+        for (int i=0;i<myTankes.size();i++){
+            myTankes.get(i).paint(graphics);
+        }
         for (int i=0;i<bullets.size();i++){
             bullets.get(i).paint(graphics);
+        }
+        for (int i=0;i<bullets.size();i++){
+            for (int j=0;j<myTankes.size();j++) {
+                bullets.get(i).collideWith(myTankes.get(j));
+            }
         }
     }
 
