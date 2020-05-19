@@ -113,8 +113,9 @@ public class Bullet {
         if (bu.intersects(ta)){
             this.die();
             myTanke.die();
-
-            tankeFrame.explodes.add(new Explode(myTanke.getX(),myTanke.getY(),this.tankeFrame));
+            int ex= myTanke.getX()+MyTanke.WIDTH/2-Explode.WIDTH/2;
+            int ey= myTanke.getY()+MyTanke.HEIGHT/2-Explode.HEIGHT/2;
+            tankeFrame.explodes.add(new Explode(ex,ey,this.tankeFrame));
 
         }
     }
