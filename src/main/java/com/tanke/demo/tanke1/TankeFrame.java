@@ -13,7 +13,8 @@ public class TankeFrame extends Frame {
     ArrayList<Bullet> bullets = new ArrayList<>();
     ArrayList<MyTanke> myTankes = new ArrayList<>();
     ArrayList<Explode> explodes= new ArrayList<>();
-    final  static int  FRAME_WIDTH=1080,FRAME_HEIGHT=960;
+    final  static int  FRAME_WIDTH=Integer.parseInt((String) PropertyMgr.get("FRAME_WIDTH"));
+    final  static int  FRAME_HEIGHT=Integer.parseInt((String) PropertyMgr.get("FRAME_HEIGHT"));
     public TankeFrame() {
         //frame就是一个窗口类
 //        Frame f = new Frame();

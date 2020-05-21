@@ -9,7 +9,7 @@ import java.util.Collection;
 public class Bullet {
     private  int x, y;
     //每次移动速度
-    final  int SPEED=10;
+    final  int SPEED=Integer.parseInt((String) PropertyMgr.get("bulletSpeed"));
     Dir dir;
     public static  int WIDTH=ResourceMgr.bulletD.getWidth();
     public static int  HEIGHT=ResourceMgr.bulletD.getHeight();
