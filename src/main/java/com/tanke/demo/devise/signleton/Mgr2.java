@@ -3,10 +3,11 @@ package com.tanke.demo.devise.signleton;
 /**
  * created by zyj on 2020/5/21
  * 加锁的懒汉式
+ * volatile 防止指令重拍  如果没有volatile 会在没有初始化的时候返回instance
  */
 public class Mgr2 {
 
-    private static Mgr2 instance;
+    private static volatile Mgr2 instance;
 
     private Mgr2() {
     }
